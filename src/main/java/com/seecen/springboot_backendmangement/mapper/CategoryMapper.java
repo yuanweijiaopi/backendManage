@@ -1,10 +1,7 @@
 package com.seecen.springboot_backendmangement.mapper;
 
 import com.seecen.springboot_backendmangement.entity.Category;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -34,4 +31,7 @@ public interface CategoryMapper {
 
     @Update("update Category set category_name = #{categoryName}, category_alias = #{categoryAlias}, update_time = NOW() where id = #{id}")
     void updateCategory(Category category);
+
+    @Delete("delete from category where id = #{id}")
+    void deleteCategory(Integer id);
 }

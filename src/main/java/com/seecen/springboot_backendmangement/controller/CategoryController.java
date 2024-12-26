@@ -7,6 +7,7 @@ import com.seecen.springboot_backendmangement.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    //新增文章分类
     @PostMapping
     public Result addCategory(@Validated(Category.Add.class) @RequestBody Category category) {
 
@@ -36,6 +38,7 @@ public class CategoryController {
         return Result.success(category);
     }
 
+    //获取当前已登录用户创建的所有文章分类
     @GetMapping
     public Result <List<Category>> getAllCategory() {
       List<Category> categoryList =  categoryService.getAllCategory();
@@ -54,6 +57,19 @@ public class CategoryController {
     @PutMapping
     public Result updateCategory(@Validated(Category.Update.class) @RequestBody Category category) {
         categoryService.updateCategory(category);
+        return Result.success();
+    }
+
+
+    // 删除文章分类
+    @DeleteMapping
+    public Result deleteCategory(Integer id) {
+        categoryService.deleteCategory(id);
+        return Result.success();
+    }
+
+    @PostMapping
+    public Result uploadedFile(@RequestParam("file") MultipartFile file) {
         return Result.success();
     }
 }

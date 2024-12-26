@@ -34,7 +34,6 @@ public class CategoryServiceImpl implements CategoryService {
         Map<String, Object> map = ThreadLocalUtil.get();
         Integer id = (Integer) map.get("id");
         return  categoryMapper.getAllCategory(id);
-
     }
 
     @Override
@@ -45,5 +44,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void updateCategory(Category category) {
         categoryMapper.updateCategory(category);
+    }
+
+    @Override
+    public void deleteCategory(Integer id) {
+        categoryMapper.deleteCategory(id);
+
     }
 }
