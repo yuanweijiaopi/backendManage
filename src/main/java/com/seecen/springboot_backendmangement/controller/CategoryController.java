@@ -68,8 +68,8 @@ public class CategoryController {
         return Result.success();
     }
 
-    @PostMapping
-    public Result uploadedFile(@RequestParam("file") MultipartFile file) {
-        return Result.success();
-    }
+//    @PostMapping
+//    public Result uploadedFile(@RequestParam("file") MultipartFile file) {
+//        return Result.success();
+//    }
 }

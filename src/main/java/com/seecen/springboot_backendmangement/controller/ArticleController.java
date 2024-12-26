@@ -1,12 +1,17 @@
 package com.seecen.springboot_backendmangement.controller;
 
+import com.seecen.springboot_backendmangement.entity.Article;
 import com.seecen.springboot_backendmangement.entity.Category;
 import com.seecen.springboot_backendmangement.entity.Result;
+import com.seecen.springboot_backendmangement.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @ClassName ArticleController
@@ -19,23 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/article")
 @Validated
 public class ArticleController {
-//    @Autowired
-//    private ArticleService articleService;
+    @Resource
+    private ArticleService articleService;
 
 
-    @PostMapping("/list")
-    public Result<String> addCategory(@RequestBody Category category){
-//        // 验证token
-//        try {
-//            Map<String, Object> claims = JwtUtil.parseToken(token);
-//        } catch (Exception e) {
-//            //http的状态码为401，表示未登录
-//            response.setStatus(401);
-//            return Result.error("未登录");
-//        }
-//        articleService.addCategory();
-
-        return Result.success("所有文章的假数据");
+    @PostMapping()
+    public Result addCategory(@RequestBody Article article){
+        articleService.addCategory(article);
+        return Result.success();
     }
 
 

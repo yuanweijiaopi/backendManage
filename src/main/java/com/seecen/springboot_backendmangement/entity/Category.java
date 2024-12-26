@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.groups.Default;
 import java.time.LocalDateTime;
 @Data
 public class Category {
@@ -31,11 +32,11 @@ public class Category {
     //分组之间可以继承, A extends B  那么A中拥有B中所有的校验项
 
 
-    public interface Add  {
+    public interface Add  extends Default {
 
     }
 
-    public interface Update {
+    public interface Update extends Default {
 
     }
 }
